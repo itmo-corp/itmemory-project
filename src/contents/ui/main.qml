@@ -17,11 +17,13 @@ Kirigami.ApplicationWindow {
     pageStack.initialPage: Kirigami.ScrollablePage {
         title: i18nc("@title", "MainPage")
 
-        Controls.Label {
-            // Center label horizontally and vertically within parent element
-            anchors.centerIn: parent
-            text: i18n("Hello World!")
-        }
+        objectName: "mainPage"
+
+        // Controls.Label {
+        //     // Center label horizontally and vertically within parent element
+        //     anchors.centerIn: parent
+        //     text: i18n("Hello World!")
+        // }
 
         Kirigami.CardsListView {
             id: layout

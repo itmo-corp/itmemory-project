@@ -4,6 +4,7 @@
 #include <QUrl>
 #include <KLocalizedContext>
 #include <KLocalizedString>
+#include <QQuickItem>
 
 #ifdef Q_OS_ANDROID
 #include <QtAndroid>
@@ -50,6 +51,20 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     if (engine.rootObjects().isEmpty()) {
         return -1;
     }
+
+    QString qmlStr = "import QtQuick 2.6; import QtQuick.Controls 2.0 as Controls; Controls.Label { anchors.centerIn: parent; text: i18n(\"Hello World!\"); }";
+    
+    QQmlComponent component(&engine);
+    component.setData(qmlStr.toUtf8(), QUrl());
+    QQuickItem *object = qobject_cast<QQuickItem *>(component.create(engine.rootContext()));
+    if (object == nullptr) {
+        qWarning() << component.errorString();
+    }
+
+    auto root = engine.rootObjects().last();
+    auto mainPage = qobject_cast<QQuickItem *>(root->findChild<QObject*>("mainPage"));
+
+    object->setParentItem(mainPage);
 
     return app.exec();
 }
