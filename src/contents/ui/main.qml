@@ -3,15 +3,15 @@ import QtQuick 2.6
 import QtQuick.Controls 2.0 as Controls
 import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.13 as Kirigami
-import org.kde.helloworld 1.0
+import org.itmocorp.itmoptics 1.0
 
 Kirigami.ApplicationWindow {
     id: root
 
-    title: i18nc("@title:window", "Exhibits")
+    title: i18nc("@title:window", "IT[M]Optics")
 
     pageStack.initialPage: Kirigami.ScrollablePage {
-        title: i18nc("@title", "MainPage")
+        title: i18nc("@title", "Exhibitions")
 
         objectName: "mainPage"
 
@@ -29,7 +29,6 @@ Kirigami.ApplicationWindow {
             {
                 console.log("posts fetched");
                 for (var i = 0; i < posts.length; ++i) {
-                    console.log(posts[i].title);
                     exhibitListModel.append(posts[i])
                 }
             }
@@ -65,7 +64,7 @@ Kirigami.ApplicationWindow {
 
                 contentItem: Controls.Label {
                     wrapMode: Text.WordWrap
-                    text: "created: " + model.createdAt + " updated: " + model.updatedAt
+                    text: i18n("Created: %1", model.createdAt.toLocaleDateString())
                 }
 
                 // on click, push the exhibit page to the page stack

@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
         <file alias="main.qml">contents/ui/main.qml</file>
-        <file alias="ExhibitPage.qml">contents/ui/ExhibitPage.qml</file>
     </qresource>
 </RCC>

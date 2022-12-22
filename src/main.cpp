@@ -29,8 +29,8 @@
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    KLocalizedString::setApplicationDomain("helloworld");
-    QGuiApplication::setApplicationDisplayName(QStringLiteral("Hello World"));
+    KLocalizedString::setApplicationDomain("itmoptics");
+    QGuiApplication::setApplicationDisplayName(QStringLiteral("IT[M]Optics"));
     // QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
     // QCoreApplication::setOrganizationDomain(QStringLiteral("kde.org"));
 
@@ -56,8 +56,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     API::JsonAPI jsonAPI = API::JsonAPI(&apiClient);
     API::Posts::PostsAPI postsAPI = API::Posts::PostsAPI(&jsonAPI);
 
-    qmlRegisterAnonymousType<API::Posts::Models::Post>("org.kde.helloworld", 1);
-    qmlRegisterSingletonInstance("org.kde.helloworld", 1, 0, "PostsAPI", &postsAPI);
+    qmlRegisterAnonymousType<API::Posts::Models::Post>("org.itmocorp.itmoptics", 1);
+    qmlRegisterSingletonInstance("org.itmocorp.itmoptics", 1, 0, "PostsAPI", &postsAPI);
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
